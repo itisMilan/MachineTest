@@ -8,17 +8,19 @@ const RegistrationForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
+
     // Create a FormData object to send the form data
     const formData = new FormData();
     formData.append('name', name);
     formData.append('password', password);
     formData.append('image', image);
     formData.append('address', address);
-  
-    fetch('/api/register', {
+console.log(formData)
+    // Send the form data to the backend
+    fetch('/signup', {
       method: 'POST',
       body: formData,
+    
     })
       .then((response) => {
         if (response.ok) {
@@ -36,7 +38,6 @@ const RegistrationForm = () => {
         console.error('Network error:', error);
       });
   };
-  
 
   return (
     <div>
